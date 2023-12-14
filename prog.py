@@ -280,7 +280,72 @@ class CarManager:
                             matching_cars.append(filename[:-4])
         return matching_cars
 
-
+    def cop(self):
+        car_files = [f for f in os.listdir(self.folder_path) if f.endswith(".txt")]
+        print("Выберите автомобиль в котором хотите копировать данные:")
+        for i, lego in enumerate(car_files):
+            print(str(i + 1) + '.', lego)
+        print("0. Назад")
+        for car_file in car_files:
+            baz = int(input())
+            if baz > len(car_files):
+                print("Error")
+                break
+            elif baz == 0:
+                break
+            elif baz < 0:
+                break
+            else:
+                print("Введите новый номер авто:")
+                new = input()
+                with open("gg/" + car_files[baz - 1], 'r', encoding="utf-8") as file:
+                    pos = 2
+                    f = codecs.open("gg/" + car_files[baz - 1], 'r', encoding='utf8')
+                    L = f.readlines()
+                    if (pos >= 0) and (pos < len(L)):
+                        if (pos == len(L) - 1):
+                            L[pos] = 'Номер: ' + new
+                        else:
+                            L[pos] = 'Номер: ' + new + '\n'
+                    f.close()
+                    f = codecs.open("gg/" + car_files[baz - 1], 'w+', encoding='utf8')
+                    for line in L:
+                        f.write(line)
+                    f.close()
+                    content = file.read()
+                with open("gg/" + new + car_files[baz - 1], 'w', encoding="utf-8") as file:
+                    file.write(content)
+    def dobav(self):
+        car_files = [f for f in os.listdir(self.folder_path) if f.endswith(".txt")]
+        print("Выберите автомобиль в который хотите добавить параметр:")
+        for i, lego in enumerate(car_files):
+            print(str(i + 1) + "." + lego)
+        print("0. Назад")
+        for car_file in car_files:
+            baz = int(input())
+            if baz > len(car_files):
+                print("Error")
+                break
+            elif baz == 0:
+                break
+            elif baz < 0:
+                break
+            else:
+                print("Введите новый параметр:")
+                par = input()
+                print("Введите значение параметра:")
+                znach = input() + "\n"
+                with open("gg/" + car_files[baz - 1], "a", encoding="utf-8") as file:
+                    file.write(par + ": " + znach)
+                    break
+    def ud(self):
+        folder = 'C:/Users/PC/proj/venv/gg'
+        for filename in os.listdir(folder):
+            file_path = os.path.join(folder, filename)
+            if os.path.isfile(file_path) or os.path.islink(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
 
 
 
@@ -293,6 +358,9 @@ print("2. Добавить автомобиль")
 print("3. Удалить автомобиль")
 print("4. Редактировать парметр автомобиля")
 print("5. Поиск")
+print("6. Копирование параметров автомобиля")
+print("7. Добавить параметр")
+print("8. Удалить все машины")
 print("0. Выйти")
 print("Ваш ответ:")
 
@@ -308,6 +376,9 @@ while menu != 0:
         print("3. Удалить автомобиль")
         print("4. Редактировать парметр автомобиля")
         print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
         print("0. Выйти")
         print("Ваш ответ:")
         menu = int(input())
@@ -346,6 +417,9 @@ while menu != 0:
         print("3. Удалить автомобиль")
         print("4. Редактировать парметр автомобиля")
         print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
         print("0. Выйти")
         print("Ваш ответ:")
         menu = int(input())
@@ -358,6 +432,9 @@ while menu != 0:
         print("3. Удалить автомобиль")
         print("4. Редактировать парметр автомобиля")
         print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
         print("0. Выйти")
         print("Ваш ответ:")
         menu = int(input())
@@ -371,6 +448,9 @@ while menu != 0:
             print("3. Удалить автомобиль")
             print("4. Редактировать парметр автомобиля")
             print("5. Поиск")
+            print("6. Копирование параметров автомобиля")
+            print("7. Добавить параметр")
+            print("8. Удалить все машины")
             print("0. Выйти")
             print("Ваш ответ:")
 
@@ -407,6 +487,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
 
@@ -417,6 +500,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
 
@@ -445,6 +531,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
                     menu = int(input())
@@ -454,6 +543,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
                     menu = int(input())
@@ -481,6 +573,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
 
@@ -491,6 +586,9 @@ while menu != 0:
                     print("3. Удалить автомобиль")
                     print("4. Редактировать парметр автомобиля")
                     print("5. Поиск")
+                    print("6. Копирование параметров автомобиля")
+                    print("7. Добавить параметр")
+                    print("8. Удалить все машины")
                     print("0. Выйти")
                     print("Ваш ответ:")
 
@@ -504,9 +602,48 @@ while menu != 0:
             print("2. Номер")
             print("3. Цвет")
             isheika = int(input())
-
-
-
+    elif menu == 6:
+        car_manager = CarManager("gg")
+        car = car_manager.cop()
+        print("1. Список автомобилей")
+        print("2. Добавить автомобиль")
+        print("3. Удалить автомобиль")
+        print("4. Редактировать парметр автомобиля")
+        print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
+        print("0. Выйти")
+        print("Ваш ответ:")
+        menu = int(input())
+    elif menu==7:
+        car_manager = CarManager("gg")
+        car = car_manager.dobav()
+        print("1. Список автомобилей")
+        print("2. Добавить автомобиль")
+        print("3. Удалить автомобиль")
+        print("4. Редактировать парметр автомобиля")
+        print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
+        print("0. Выйти")
+        print("Ваш ответ:")
+        menu = int(input())
+    elif menu == 8:
+        car_manager = CarManager("gg")
+        car = car_manager.ud()
+        print("1. Список автомобилей")
+        print("2. Добавить автомобиль")
+        print("3. Удалить автомобиль")
+        print("4. Редактировать парметр автомобиля")
+        print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
+        print("0. Выйти")
+        print("Ваш ответ:")
+        menu = int(input())
     # исключение на ошибку
     else:
         print("1. Список автомобилей")
@@ -514,6 +651,9 @@ while menu != 0:
         print("3. Удалить автомобиль")
         print("4. Редактировать парметр автомобиля")
         print("5. Поиск")
+        print("6. Копирование параметров автомобиля")
+        print("7. Добавить параметр")
+        print("8. Удалить все машины")
         print("0. Выйти")
         print("Ваш ответ:")
         menu = int(input())
